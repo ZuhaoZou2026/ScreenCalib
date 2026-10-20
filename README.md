@@ -1,2 +1,2 @@
 # ScreenCalib
-Use a display to calibrate LiDAR-camera extrinsic
+Use a display to quickly calibrate LiDAR-camera extrinsic
