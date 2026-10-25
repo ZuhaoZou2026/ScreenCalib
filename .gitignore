@@ -1,0 +1,2 @@
+# Distribute release archives through GitHub Releases.
+/release/*.tar.gz
