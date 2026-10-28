@@ -42,6 +42,13 @@ Check the bundled runtime with:
 
 ## Prepare the display
 
+Available target images (choose one):
+
+- [apriltag_black.png](apriltag_black.png)
+- [apriltag_black_rectangle.png](apriltag_black_rectangle.png)
+- [apriltag_gray_rectangle.png](apriltag_gray_rectangle.png)
+- [apriltag_white_rectangle.png](apriltag_white_rectangle.png)
+
 Before recording your own calibration bag, choose one `apriltag_xx.png` image and show it on the display used as the calibration target.
 
 Use a ruler to measure the actual side length of one AprilTag's black square on the screen, excluding the surrounding white margin. Convert the measurement to meters and enter it as the AprilTag size in the GUI (for example, 35 mm = 0.035 m). Measure with the image at the same display scale used during recording; remeasure if you resize the image or change the display scaling.
