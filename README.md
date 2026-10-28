@@ -47,6 +47,8 @@ Extract `MP_gui_example_bag.zip`. It contains:
 - `velodyne64_sx_0p0_sy_m0p0_sz_m0p0.bag`
 - `sim_velodyne64_camera_from_bag.yaml`
 
+The ground-truth (GT) extrinsic transform is included in the example bag's `/tf` topic.
+
 1. Open ScreenCalib and choose **Joint Multi-Pose Mode**.
 2. Select the extracted bag and camera YAML, and enter the AprilTag black-square size in meters used in the recording.
 3. Click **Load bag** and select the camera topic matching the YAML: `/sim/camera/image_raw`. Select the bag's LiDAR topic where prompted.
