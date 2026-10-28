@@ -1,8 +1,57 @@
 # ScreenCalib
-Use a display to quickly calibrate LiDAR-camera extrinsic
+
+Use a display to quickly calibrate LiDAR–camera extrinsics.
 
 [Watch the ScreenCalib GUI demo](https://youtu.be/TpmN8ugaYNQ)
 
-To try ScreenCalib with example data, download [SP_gui_example_bag.zip](https://github.com/ZuhaoZou2026/ScreenCalib/releases/download/v1.0.0/SP_gui_example_bag.zip) from the [v1.0.0 release](https://github.com/ZuhaoZou2026/ScreenCalib/releases/tag/v1.0.0) and extract it. The ZIP includes a ROS bag and its camera-intrinsics YAML. Use the extracted bag and YAML in the calibration workflow below.
+## Download
 
-For Ubuntu 18.04 x86_64, download [the native package](https://github.com/ZuhaoZou2026/ScreenCalib/releases/download/v1.0.0/ScreenCalib-1.0.0-ubuntu18.04-x86_64.tar.gz), extract it, and run `bash install.sh` inside the extracted folder as your normal user (without `sudo`). The installer works offline, includes the required runtime libraries, and creates a ScreenCalib desktop shortcut; no separate ROS, Python packages, or Docker installation is needed. Open ScreenCalib, load a ROS 1 bag, select the camera and LiDAR topics, and click **Check bag**. After validation, click **Next**, enter the AprilTag black-square size in meters, select your camera-intrinsics YAML and output directory, then click **Run calibration**.
+The [1.1.0 release](https://github.com/ZuhaoZou2026/ScreenCalib/releases/tag/1.1.0) provides the native GUI for **Ubuntu 18.04 x86_64**, including Single-Pose and Joint Multi-Pose modes.
+
+| Download | Contents |
+| --- | --- |
+| [ScreenCalib-1.1.0-ubuntu18.04-x86_64.tar.gz](https://github.com/ZuhaoZou2026/ScreenCalib/releases/download/1.1.0/ScreenCalib-1.1.0-ubuntu18.04-x86_64.tar.gz) | GUI and bundled runtime |
+| [ScreenCalib-1.1.0-ubuntu18.04-x86_64.sha256](https://github.com/ZuhaoZou2026/ScreenCalib/releases/download/1.1.0/ScreenCalib-1.1.0-ubuntu18.04-x86_64.sha256) | SHA-256 checksum for the GUI archive |
+| [MP_gui_example_bag.zip](https://github.com/ZuhaoZou2026/ScreenCalib/releases/download/1.1.0/MP_gui_example_bag.zip) | Multi-pose example ROS bag and matching camera-intrinsics YAML |
+
+## Install and launch
+
+Download the GUI archive and checksum into the same directory, then run:
+
+```bash
+sha256sum -c ScreenCalib-1.1.0-ubuntu18.04-x86_64.sha256
+tar -xzf ScreenCalib-1.1.0-ubuntu18.04-x86_64.tar.gz
+cd ScreenCalib-Ubuntu18-x86_64
+python3 refresh-launcher.py .
+./ScreenCalib.sh
+```
+
+Run as your normal user, without `sudo`. To launch by icon, double-click `ScreenCalib.desktop` and select **Allow Launching** if prompted. Keep the extracted folder together in a writable location.
+
+The package includes its matching Linux userspace, Python, ROS, OpenCV, PCL, Ceres, Tk, Pillow, and PRoot. Running it requires no separate ROS, Python packages, Docker, or administrator access. It requires an x86_64 Linux host with a graphical X11 desktop and permission to use `ptrace`. Input files under `/home`, `/media`, and `/mnt` are accessible. Results are saved in the extracted package's `results/` directory.
+
+Check the bundled runtime with:
+
+```bash
+./ScreenCalib.sh --check
+```
+
+## Try the multi-pose example
+
+Extract `MP_gui_example_bag.zip`. It contains:
+
+- `velodyne64_sx_0p0_sy_m0p0_sz_m0p0.bag`
+- `sim_velodyne64_camera_from_bag.yaml`
+
+1. Open ScreenCalib and choose **Joint Multi-Pose Mode**.
+2. Select the extracted bag and camera YAML, and enter the AprilTag black-square size in meters used in the recording.
+3. Click **Load bag** and select the camera topic matching the YAML: `/sim/camera/image_raw`. Select the bag's LiDAR topic where prompted.
+4. Click **Cut into static poses**. Review the motion plot and detected intervals. Adjust the motion threshold and click **Cut again** if needed.
+5. Click **Calibrate** to process the static-pose bags. Use the **Pose N** buttons to inspect individual results.
+6. When at least two successful pose bundles are available, click **Joint calibration**. Review convergence and geometry checks before using the final extrinsic transform.
+
+## Single-pose workflow
+
+Choose **Single-Pose Mode**, load a ROS 1 bag, select camera and LiDAR topics, and click **Check bag**. After validation, click **Next**, enter the AprilTag black-square size in meters, select the camera-intrinsics YAML and output directory, then click **Run calibration**.
+
+The previous [single-pose example bag and camera YAML](https://github.com/ZuhaoZou2026/ScreenCalib/releases/download/v1.0.0/SP_gui_example_bag.zip) and [1.0.0 release](https://github.com/ZuhaoZou2026/ScreenCalib/releases/tag/v1.0.0) remain available.
