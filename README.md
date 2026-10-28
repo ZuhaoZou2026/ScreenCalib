@@ -2,7 +2,9 @@
 
 Use a display to quickly calibrate LiDAR–camera extrinsics.
 
-[Watch the ScreenCalib GUI demo](https://youtu.be/TpmN8ugaYNQ)
+[Watch the full ScreenCalib software demo](https://www.youtube.com/watch?v=ckqXlYIHabs)
+
+[Watch the single-pose (SP) mode demo](https://youtu.be/TpmN8ugaYNQ)
 
 ## Download
 
