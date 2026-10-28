@@ -40,6 +40,10 @@ Check the bundled runtime with:
 ./ScreenCalib.sh --check
 ```
 
+## Prepare the display
+
+Before recording your own calibration bag, choose one `apriltag_xx.png` image and show it on the display used as the calibration target.
+
 ## Try the multi-pose example
 
 Extract `MP_gui_example_bag.zip`. It contains:
