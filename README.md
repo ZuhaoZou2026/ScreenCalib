@@ -1,5 +1,7 @@
 # ScreenCalib
 
+The full source code will be released once the associated paper is published or this repository receives strong community interest.
+
 Use a display to quickly calibrate LiDAR–camera extrinsics.
 
 [Watch the full ScreenCalib software demo](https://www.youtube.com/watch?v=ckqXlYIHabs)
